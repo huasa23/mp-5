@@ -1,6 +1,6 @@
 "use server"
 
-import { connectToDatabase } from "./MongoClient";
+import { connectToDatabase } from "./mongoClient";
 
 export async function shortenUrl(destinationUrl: string, alias: string) {
     const { db } = await connectToDatabase();

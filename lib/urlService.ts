@@ -1,6 +1,6 @@
 "use server"
 
-import { connectToDatabase } from "./MongoClient";
+import { connectToDatabase } from "./mongoClient";
 
 export async function getDestinationUrl(alias: string) {
     const { db } = await connectToDatabase();

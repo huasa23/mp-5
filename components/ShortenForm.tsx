@@ -1,7 +1,7 @@
 "use client"
 import { useState } from "react";
-import { shortenUrl } from "@/lib/ShortenService";
-import { getDomainUrl } from "@/lib/GetDomainUrl";
+import { shortenUrl } from "@/lib/shortenService";
+import { getDomainUrl } from "@/lib/domainUrl";
 import styled from "styled-components";
 import { Play } from "next/font/google";
 
