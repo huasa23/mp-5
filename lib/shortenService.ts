@@ -1,9 +1,9 @@
 "use server"
 
-import { connectToDatabase } from "./mongoclient";
+import { connectToDatabase } from "./MongoClient";
 
 export async function shortenUrl(destinationUrl: string, alias: string) {
-    const { client,db } = await connectToDatabase();
+    const { db } = await connectToDatabase();
     const collection = db.collection('url_mapping');
     
     const cursor1 = await collection.find({destinationUrl: destinationUrl});
@@ -18,8 +18,9 @@ export async function shortenUrl(destinationUrl: string, alias: string) {
             alias: alias,
             createdAt: new Date()
         });
-        return true;
+        if(result.acknowledged) {
+            return true;
+        }
     }
     return false;
-    
 }

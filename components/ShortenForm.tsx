@@ -1,17 +1,10 @@
 "use client"
 import { useState } from "react";
-import { shortenUrl } from "@/lib/shortenService";
-import { getDomainUrl } from "@/lib/getDomainUrl";
+import { shortenUrl } from "@/lib/ShortenService";
+import { getDomainUrl } from "@/lib/GetDomainUrl";
 import styled from "styled-components";
 import { Play } from "next/font/google";
-import { Sixtyfour_Convergence } from "next/font/google";
 
-const sixtyfourConvergence = Sixtyfour_Convergence({
-    weight: '400',
-    style: 'normal',
-    subsets: ['latin'],
-    display: 'swap',
-});
 
 const play = Play({
     weight: '400',
@@ -102,7 +95,7 @@ export default function ShortenForm() {
         const result = await shortenUrl(formData.destinationUrl, formData.alias);
         const domain = await getDomainUrl();
         if(result) {
-            setFinalUrl(`Your URL is: ${domain}/${formData.alias}`);
+            setFinalUrl(`Your new URL is: ${domain}/${formData.alias}`);
         } else {
             setFinalUrl('Your URL or alias is already taken!');
         }

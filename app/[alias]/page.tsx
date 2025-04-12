@@ -1,6 +1,6 @@
 "use server"
 import { redirect } from "next/navigation";
-import { getDestinationUrl } from "@/lib/urlService";
+import { getDestinationUrl } from "@/lib/UrlService";
 
 interface PageProps {
     params: {
