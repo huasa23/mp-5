@@ -1,17 +1,12 @@
-"use server"
-import { redirect } from "next/navigation";
+"use client"
+import { redirect, useParams } from "next/navigation";
 import { getDestinationUrl } from "@/lib/urlService";
-
-interface PageProps {
-    params: {
-      alias: string;
-    }
-  }
   
-export default async function DynamicParamPage({ params }: PageProps) {
-  const resolvedParams = await params;
-  if(resolvedParams.alias) {
-    const destinationUrl = await getDestinationUrl(resolvedParams.alias);
+export default async function AliasPage() {
+  
+  const params = useParams();
+  if(params.alias) {
+    const destinationUrl = await getDestinationUrl(params.alias as string);
     if (destinationUrl) {
       redirect(destinationUrl);
     } 
