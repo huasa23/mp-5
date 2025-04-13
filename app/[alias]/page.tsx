@@ -1,15 +1,20 @@
-"use client"
-import { redirect, useParams } from "next/navigation";
-import { getDestinationUrl } from "@/lib/urlService";
-  
-export default async function AliasPage() {
-  
-  const params = useParams();
-  if(params.alias) {
-    const destinationUrl = await getDestinationUrl(params.alias as string);
-    if (destinationUrl) {
-      redirect(destinationUrl);
-    } 
+"use server"
+import { redirect } from 'next/navigation'
+import { getDestinationUrl } from '@/lib/urlService'
+ 
+export default async function Profile({
+  params,
+}: {
+  params: Promise<{ alias: string }>
+}) {
+  const { alias } = await params
+  const destinationUrl = await getDestinationUrl(alias)
+  console.log("destinationUrl", destinationUrl);
+  if (!destinationUrl) {
+    redirect('/')
   }
-  
+  else {
+    redirect(destinationUrl)
+  }
+
 }
