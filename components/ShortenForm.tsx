@@ -107,7 +107,7 @@ export default function ShortenForm() {
             <FormDestination>Enter a long URL to create a shorter, shareable link</FormDestination>
             <Form onSubmit={handleSubmit}>
                 <Lable>URL</Lable>
-                <Input type="text" id="destinationUrl" name="destinationUrl" value={formData.destinationUrl} onChange={handleChange} placeholder="Enter URL" />
+                <Input type="text" id="destinationUrl" pattern="/^https?:\/\/\S+$/i" name="destinationUrl" value={formData.destinationUrl} onChange={handleChange} placeholder="Enter URL" />
                 <Lable>Alias</Lable>
                 <Input type="text" id="alias" name="alias" value={formData.alias} onChange={handleChange} placeholder="Enter Alias" />
                 <Button type="submit">Shorten</Button>
