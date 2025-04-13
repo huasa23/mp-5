@@ -9,7 +9,7 @@ export default async function Profile({
 }) {
   const { alias } = await params
   const destinationUrl = await getDestinationUrl(alias)
-  console.log("destinationUrl", destinationUrl);
+  
   if (!destinationUrl) {
     redirect('/')
   }
